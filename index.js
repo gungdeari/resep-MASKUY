@@ -1,19 +1,24 @@
-let express = require('express')
-let app = express()
-let PORT = process.env.PORT || 4000
+const express = require('express')
+const route = require("./routers/routers");
+const session = require('express-session');
+const flash = require('express-flash');
 
-app.set('view engine', 'ejs')
+const app = express();
+const port = 4000;
 
-app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(session({
+    secret: 'secret-key',
+    resave: false,
+    saveUninitialized: false
+}));
 
-app.get('/', (req, res) => {
-    res.render('home')
-})
+app.set('view engine', 'ejs');
 
-app.get('/detail', (req, res) => {
-    res.render('detail')
-})
+app.use(("/"), express.static('public'));
 
-app.listen(PORT, (error) => {
-    console.log(`Server running on port ${PORT}`);
+app.use(route);
+
+app.listen(port, (error) => {
+    console.log(`Server running on port http://localhost:${port}/`);
 });
