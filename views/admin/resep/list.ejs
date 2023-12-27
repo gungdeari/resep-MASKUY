@@ -74,13 +74,13 @@
                                 <% resep.forEach(function(res) { %>
                                     <tr>
                                         <td><%= res.id %></td>
-                                        <td><%= res.nama_resep %></td>
+                                        <td><%= res.nama %></td>
                                         <td><img
-                                            src="/uploads/<%= cos.foto_resep  %>"
+                                            src="/uploads/<%= res.foto_resep  %>"
                                             alt=""
                                             width="80px"
                                         />
-                                        </td>td>  
+                                        </td>  
                                         <td><%= res.deskripsi %></td>
                                         <td><%= res.waktu %></td>
                                         <td><%= res.level %></td>

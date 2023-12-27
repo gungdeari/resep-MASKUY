@@ -54,40 +54,40 @@
                     <div class="card-body">
                         <form action="/admin/resep/store" method="post">
                             <div class="form-group">
-                                <label for="nama">Nama Masakan</label>
-                                <input type="text" class="form-control" name="nama" placeholder="Nama Masakan" value="<%= oldValues.nama %>">
+                                <label for="nama_resep">Nama Masakan</label>
+                                <input type="text" class="form-control" name="nama_resep" placeholder="Nama Masakan" value="<%= oldValues.nama_resep %>">
                             </div>
                             <div class="form-group">
-                                <label for="gambar">Gambar Masakan</label>
+                                <label for="foto_resep">Gambar Masakan</label>
                                 <input type="file" class="form-control" name="gambar" placeholder="Gambar Masakan">
                             </div>
                             <div class="form-group">
-                                <label for="deskripsi">Deskripsi</label>
-                                <textarea name="deskripsi" rows="10" class="d-block w-100 form-control"><%= oldValues.deskripsi %></textarea>
+                                <label for="deskripsi_resep">Deskripsi</label>
+                                <textarea name="deskripsi_resep" rows="10" class="d-block w-100 form-control"><%= oldValues.deskripsi_resep %></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="waktu">Waktu(Jam)</label>
-                                <input type="number" class="form-control" name="waktu" placeholder="Lama Memasak (Jam)" value="<%= oldValues.waktu %>">
+                                <label for="waktu_resep">Waktu(Menit)</label>
+                                <input type="number" class="form-control" name="waktu_resep" placeholder="Lama Memasak (Jam)" value="<%= oldValues.waktu_resep * 60 %>">
                             </div>
                             <div class="form-group">
-                                <label for="level">Level</label>
-                                <select class="form-control" name="level">
-                                    <option value="Mudah" <% if (oldValues.level === 'Mudah') { %> selected <% } %>>Mudah</option>
-                                    <option value="Sedang" <% if (oldValues.level === 'Sedang') { %> selected <% } %>>Sedang</option>
-                                    <option value="Susah" <% if (oldValues.level === 'Susah') { %> selected <% } %>>Susah</option>
+                                <label for="level_resep">Level</label>
+                                <select class="form-control" name="level_resep">
+                                    <option value="easy" <% if (oldValues.level_resep === 'easy') { %> selected <% } %>>Mudah</option>
+                                    <option value="medium" <% if (oldValues.level_resep === 'medium') { %> selected <% } %>>Sedang</option>
+                                    <option value="hard" <% if (oldValues.level_resep === 'hard') { %> selected <% } %>>Susah</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="porsi">Porsi</label>
-                                <input type="number" class="form-control" name="porsi" placeholder="Porsi Penyajian" value="<%= oldValues.porsi %>" min="1">
+                                <label for="porsi_resep">Porsi</label>
+                                <input type="number" class="form-control" name="porsi_resep" placeholder="Porsi Penyajian" value="<%= oldValues.porsi_resep %>" min="1">
                             </div>
                             <div class="form-group">
-                                <label for="bahan">Bahan yang digunakan</label>
-                                <textarea name="bahan" rows="10" class="form-control" placeholder="Bahan yang digunakan"><%= oldValues.bahan %></textarea>
+                                <label for="bahan_resep">Bahan yang digunakan</label>
+                                <textarea name="bahan_resep" rows="10" class="form-control" placeholder="Bahan yang digunakan"><%= oldValues.bahan_resep %></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="cara">Cara Memasak</label>
-                                <textarea name="cara" rows="10" class="form-control" placeholder="Cara memasak"><%= oldValues.cara %></textarea>
+                                <label for="cara_resep">Cara Memasak</label>
+                                <textarea name="cara_resep" rows="10" class="form-control" placeholder="Cara memasak"><%= oldValues.cara_resep %></textarea>
                             </div>
                                                                              
                             <button type="submit" class="btn btn-danger btn-block">

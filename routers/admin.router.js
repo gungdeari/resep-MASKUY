@@ -25,13 +25,13 @@ router.get("/admin/resep/list", ResepController.index);
 router.get("/admin/resep/create", ResepController.create);
 router.post(
   "/admin/resep/store",
-  upload.single("img"),
+  upload.single("gambar"),
   ResepController.store
 );
 router.get("/resep/:id", ResepController.edit);
 router.post(
   "/admin/resep/update/:id",
-  upload.single("img"),
+  upload.single("gambar"),
   ResepController.update
 );
 router.post("/admin/resep/delete", ResepController.delete);

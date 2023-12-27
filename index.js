@@ -12,11 +12,10 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+app.use(flash());
 
 app.set('view engine', 'ejs');
-
 app.use(("/"), express.static('public'));
-
 app.use(route);
 
 app.listen(port, (error) => {

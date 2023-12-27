@@ -53,7 +53,7 @@ class ResepController {
       });
 
       if (result) {
-        req.flash("success", "Success Delete Data Resep");
+        req.flash("success", "Success Menambah Data Resep");
         res.redirect("/admin/resep/list");
       }
     } catch (error) {
