@@ -8,7 +8,7 @@ exports.up = function(knex) {
         table.string('nama');
         table.text('gambar');
         table.string('deskripsi');
-        table.time('waktu');
+        table.string('waktu');
         table.enu('level', ['easy', 'medium', 'hard']);
         table.integer('porsi');
         table.text('bahan');

@@ -22,11 +22,11 @@ body {
     transition: 0.5s;
 }
 
-.navbar.sticky {
+/* .navbar.sticky {
 	background: #fff;
 	padding: 10px 100px;
 	box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-}
+} */
   
 .logo {
     font-size: 24px;
@@ -408,6 +408,10 @@ body {
     gap: 20px; 
 }
 
+.artikel-wrap .link-artikel{
+    text-decoration: none;
+}
+
 .artikel-box {
     width: 100%; 
     height: 400px;
@@ -435,6 +439,7 @@ body {
     font-size: 16px;
     text-align: center;
     font-weight: 300;
+    color: black;
 }
 
 
@@ -666,7 +671,17 @@ footer .container .sec.contact ul.info li span i {
     text-align: center; 
     border-radius: 15px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    height: 100px;
+    height: 120px;
+}
+
+.ingredients-list {
+    list-style: decimal;
+    padding-left: 20px;
+}
+
+.cook-list {
+    list-style: decimal;
+    padding-left: 20px;
 }
 
 .box-desc .icon-desc .box-icon i{
@@ -736,7 +751,6 @@ footer .container .sec.contact ul.info li span i {
 .box-cara li{
     font-weight: 300;
     margin: 5px 0;
-    text-indent: -1.4em;
 }
 
 /* CSS untuk membuat form di tengah dan lebih besar */
@@ -755,25 +769,52 @@ footer .container .sec.contact ul.info li span i {
     align-items: center;
 }
 
-/* Untuk membuat input lebih besar */
-input[type="text"],
-input[type="password"]{
-  padding: 10px; /* Padding untuk input dan tombol */
-  font-size: 16px; /* Ukuran font */
-  border-radius: 5px; /* Mengatur border radius */
-  border: 1px solid #ccc; 
-  margin-left: 15px;
+/*ARTIKELLLLLLLLLLLL*/
+.detail-artikel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 1500px; 
 }
 
-.login-btn {
+.detail-artikel .artikel-box-detail{
     display: flex;
-    justify-content: flex-start;
-    padding: 10px; /* Padding untuk input dan tombol */
-    font-size: 16px; /* Ukuran font */
-    border-radius: 5px; /* Mengatur border radius */
-    border: 1px solid #ccc;
-    margin-top: 30px;     
+    flex-direction: column;
+    width: 1000px;
+    padding: 100px 50px 50px 50px;
+    justify-content: center;
+    border: none;
+    border-radius: 15px; 
+    overflow: hidden; 
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
+
+.artikel-box-detail .title-artikel {
+    display: flex;
+}
+
+.artikel-box-detail .artikel-content-detail{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    max-width: 1000px;
+    height: 100%;
+}
+
+.artikel-content-detail p {
+    text-align: justify;
+    text-indent: 20px; 
+    margin: 10px 0; 
+}
+
+.artikel-box-detail .img-detail {
+    height: 400px;
+    width: 1000px;
+    border-radius: 20px;
+    object-fit: cover; 
+    filter: brightness(80%);
+}
+
 
 
 

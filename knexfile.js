@@ -7,6 +7,8 @@ module.exports = {
       password: '', 
       database: 'maskuy' 
     },
+    migrations: {
+      directory: './db/migrations', // Lokasi direktori migrations Anda
+    },
   },
 };
-

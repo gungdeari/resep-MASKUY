@@ -3,6 +3,7 @@ const router = Router();
 const upload = require("../middlewares/upload");
 
 const ResepController = require("../controller/resepController");
+const ArtikelController = require('../controller/artikelController');
 
 // router.get('/login', (req, res) => {
 //     res.render('login')
@@ -23,17 +24,17 @@ router.get('/admin/carrousel', (req, res) => {
 //Resep
 router.get("/admin/resep/list", ResepController.index);
 router.get("/admin/resep/create", ResepController.create);
-router.post(
-  "/admin/resep/store",
-  upload.single("gambar"),
-  ResepController.store
-);
-router.get("/resep/:id", ResepController.edit);
-router.post(
-  "/admin/resep/update/:id",
-  upload.single("gambar"),
-  ResepController.update
-);
-router.post("/admin/resep/delete", ResepController.delete);
+router.post("/admin/resep/store", upload.single("gambar"), ResepController.store);
+router.get("/admin/resep/edit/:id", ResepController.edit);
+router.post( "/admin/resep/update/:id", upload.single("gambar"), ResepController.update);
+router.post("/admin/resep/delete/:id", ResepController.delete);
+
+//Admin-Artikel
+router.get("/admin/artikel/list", ArtikelController.index);
+router.get("/admin/artikel/create", ArtikelController.create);
+router.post("/admin/artikel/store", upload.single("gambar"), ArtikelController.store);
+router.get("/admin/artikel/edit/:id", ArtikelController.edit);
+router.post( "/admin/artikel/update/:id", upload.single("gambar"), ArtikelController.update);
+router.post("/admin/artikel/delete/:id", ArtikelController.delete);
 
 module.exports = router;

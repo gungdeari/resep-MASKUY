@@ -35,61 +35,67 @@
         </div>
     </nav>
 
+
     <div class="detail-resep">
-        <div class="container-resep">
-            <div class="box-image">
-                <img src="/assets/resep1.jpg" alt="">
-            </div>
-            <div class="box-desc">
-                <div class="resep-desc">
-                  <h2>Rendang Khas Padang</h2>
-                  <p>Rendang, masakan ikonik dari Padang, Sumatera Barat, Indonesia, adalah simbol seni masak luar biasa. Daging sapi lembut dimasak perlahan dalam rempah-rempah khas, menghasilkan cita rasa kaya dan kompleks. Tekstur dalam, rasa gurih, pedas, dan manis dari rempah yang meresap sempurna ke dalam daging, serta saus kentalnya, menjadikan rendang tak tertandingi.</p>
-                </div>
-                <div class="icon-desc">
-                  <div class="box-icon">
-                    <i class="fas fa-clock">
-                      <p>8 Jam</p>
-                      <h4>Waktu Memasak</h4>
-                    </i>
-                  </div>
-                  <div class="box-icon">
-                    <i class="fas fa-chart-bar">
-                      <p>Sedang</p>
-                      <h4>Tingkat Kesulitan</h4>
-                    </i>
-                  </div>
-                  <div class="box-icon">
-                    <i class="fas fa-utensils">
-                      <p>3 Orang</p>
-                      <h4>Penyajian</h4>
-                    </i>
-                  </div>
-                </div>
-            </div>
+      <div class="container-resep">
+        <div class="box-image">
+            <img src="/uploads/<%= resep.gambar%>" alt="">
         </div>
+        <div class="box-desc">
+          <div class="resep-desc">
+            <h2><%= resep.nama %></h2>
+            <p><%= resep.deskripsi %></p>
+          </div>
+          <div class="icon-desc">
+            <div class="box-icon">
+              <i class="fas fa-clock">
+                <p><%= resep.waktuFormatted %></p>
+                <h4>Waktu Memasak</h4>
+              </i>              
+            </div>
+            <div class="box-icon">
+              <i class="fas fa-chart-bar">
+                <p><%= resep.level %></p>
+                <h4>Tingkat Kesulitan</h4>
+              </i>
+            </div>
+            <div class="box-icon">
+              <i class="fas fa-utensils">
+                <p><%= resep.porsi %> Orang</p>
+                <h4>Penyajian</h4>
+              </i>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>  
     <div class="cara-bahan">
       <div class="container-cara-bahan">
         <div class="box-bahan">
             <h3>Bahan</h3>
-            <li>Daging sapi potong kecil</li>
-            <li>Bawang putih, bawang merah</li>
-            <li>Kunyit, lengkuas, jahe</li>
-            <li>Serai, cabe merah kering/cabe rawit</li>
-            <li>Ketumbar, jintan</li>
-            <li>Santan kelapa</li>
-            <li>Daun jeruk, daun kunyit</li>
-            <li>Minyak goreng</li>
-            <li>Garam, gula</li>
-            <li>Air</li>
+            <ul class="ingredients-list">
+              <% 
+              // Memisahkan teks menjadi array berdasarkan baris baru (\n)
+              const bahanList = resep.bahan.split('\n').filter(item => item.trim() !== '');
+      
+              // Menampilkan bahan dalam bentuk list
+              bahanList.forEach(bahan => { %>
+                  <li><%= bahan %></li>
+              <% }) %>
+            </ul>
         </div>
         <div class="box-cara">
             <h3>Cara Masak</h3>
-            <li>Tumis bumbu halus dengan minyak goreng hingga harum.</li>
-            <li>Masukkan potongan daging sapi yang sudah dipersiapkan dan aduk hingga berubah warna.</li>
-            <li>Tambahkan santan kelapa dan air, aduk rata, biarkan mendidih dengan api sedang.</li>
-            <li>Masak dengan api kecil hingga bumbu meresap dan daging menjadi empuk.</li>
-            <li>Biarkan rendang mengental dan santan terserap sepenuhnya hingga minyak keluar dari campuran. Aduk secara teratur agar tidak gosong.</li>
+            <ul class="cook-list">
+              <% 
+              // Memisahkan teks menjadi array berdasarkan baris baru (\n)
+              const caraList = resep.cara.split('\n').filter(item => item.trim() !== '');
+      
+              // Menampilkan cara dalam bentuk list
+              caraList.forEach(cara => { %>
+                  <li><%= cara %></li>
+              <% }) %>
+            </ul>
         </div>
       </div>
     </div>
@@ -105,27 +111,27 @@
     </div>
 
     <div class="artikel">
-        <div class="artikel-content">
-          <h1>Artikel Terbaru</h1>
-          <div class="artikel-wrap">
-            <div class="artikel-box">
-              <img src="/assets/artikel1.jpg" alt="">
-              <p>Khasiat Luar Biasa Ubi Ungu: Makanan Wajib dalam Diet Sehat Anda</p>
-            </div>
-            <div class="artikel-box">
-              <img src="/assets/artikel2.jpg" alt="">
-              <p>Daging Ayam Kini Lebih Nikmat: 7 Ide Kreatif dalam Mengolahnya di Dapur Anda</p>
-            </div>
-            <div class="artikel-box">
-              <img src="/assets/artikel3.jpg" alt="">
-              <p>Tips Memilih dan Menyajikan Makanan Sehat dalam Program Diet Anda</p>
-            </div>
-            <div class="artikel-box">
-              <img src="/assets/artikel4.jpg" alt="">
-              <p>Menjelajahi Kelezatan Masakan Korea: 10 Hidangan yang Wajib Anda Coba</p>
-            </div>
+      <div class="artikel-content">
+        <h1>Artikel Terbaru</h1>
+        <div class="artikel-wrap">
+          <div class="artikel-box">
+            <img src="/assets/artikel1.jpg" alt="">
+            <p>Khasiat Luar Biasa Ubi Ungu: Makanan Wajib dalam Diet Sehat Anda</p>
+          </div>
+          <div class="artikel-box">
+            <img src="/assets/artikel2.jpg" alt="">
+            <p>Daging Ayam Kini Lebih Nikmat: 7 Ide Kreatif dalam Mengolahnya di Dapur Anda</p>
+          </div>
+          <div class="artikel-box">
+            <img src="/assets/artikel3.jpg" alt="">
+            <p>Tips Memilih dan Menyajikan Makanan Sehat dalam Program Diet Anda</p>
+          </div>
+          <div class="artikel-box">
+            <img src="/assets/artikel4.jpg" alt="">
+            <p>Menjelajahi Kelezatan Masakan Korea: 10 Hidangan yang Wajib Anda Coba</p>
           </div>
         </div>
+      </div>
     </div>
 
     <footer>
@@ -169,4 +175,6 @@
         </div>
     </footer>
 </body>
+
+
 </html>

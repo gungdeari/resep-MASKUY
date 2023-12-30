@@ -47,9 +47,42 @@
         </div>
 
         <div class="main-content">
-            <h1 class="admin-dash">Helloww Min</h1>
-        </div>
+
+            <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
+        <h1 class="h3 mb-0 text-gray-800">Edit Artikel <%= artikel.judul %></h1>
     </div>
 
+    <div class="card shadow">
+        <div class="card-body">
+            <form action="/admin/artikel/update/<%= artikel.id %>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="_method" value="PUT">
+                <div class="form-group">
+                    <label for="judul_artikel">Judul Artikel</label>
+                    <input type="text" class="form-control" name="judul_artikel" placeholder="Judul Artikel" value="<%= artikel.judul_artikel %>">
+                </div>
+                <div class="form-group">
+                    <label for="foto_artikel">Gambar Masakan</label>
+                    <input type="file" class="form-control" name="gambar" placeholder="Gambar Masakan">
+                </div>
+                <div class="form-group">
+                    <label for="content_artikel">Content Artikel</label>
+                    <textarea name="content_artikel" rows="10" class="d-block w-100 form-control"><%= artikel.content_artikel %></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-danger btn-block">
+                    Save Change
+                </button>
+            </form>
+        </div>
+    </div> 
 
+</div>
+
+            
+        </div>
+
+    </div>
 </body>

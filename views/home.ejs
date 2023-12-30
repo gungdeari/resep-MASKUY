@@ -82,38 +82,20 @@
       <div class="resep-content">
         <h1>Resep Terbaru</h1>
         <div class="resep-wrap">
-          <a href="/detail" class="resep-box-wrap">
-            <div class="resep-box">
-              <img src="/assets/resep1.jpg" alt="">
-              <h3>Rendang Khas Padang</h3>
-              <div class="detail">
-                <span class="detail-icon"><i class="fas fa-clock"></i></span>
-                <span class="detail-text">8 Jam</span>
-                <span class="detail-icon"><i class="fas fa-utensils"></i></span>
-                <span class="detail-text">10 Orang</span>
+          <% resep.forEach(item => { %>
+            <a href="/detail/<%= item.id %>" class="resep-box-wrap">
+              <div class="resep-box">
+                <img src="/uploads/<%= item.gambar %>" alt="">
+                <h3><%= item.nama %></h3>
+                <div class="detail">
+                  <span class="detail-icon"><i class="fas fa-clock"></i></span>
+                  <span class="detail-text"><%= item.waktuFormatted %></span>
+                  <span class="detail-icon"><i class="fas fa-utensils"></i></span>
+                  <span class="detail-text"><%= item.porsi %> Orang</span>
+                </div>
               </div>
-            </div>
-          </a>
-          <div class="resep-box">
-            <img src="/assets/resep2.jpg" alt="">
-            <h3>Kolak Pisang</h3>
-            <div class="detail">
-              <span class="detail-icon"><i class="fas fa-clock"></i></span>
-              <span class="detail-text">30 Menit</span>
-              <span class="detail-icon"><i class="fas fa-utensils"></i></span>
-              <span class="detail-text">1 Orang</span>
-            </div>
-          </div>
-          <div class="resep-box">
-            <img src="/assets/resep3.jpg" alt="">
-            <h3>Sayur Capcay</h3>
-            <div class="detail">
-              <span class="detail-icon"><i class="fas fa-clock"></i></span>
-              <span class="detail-text">20 Menit</span>
-              <span class="detail-icon"><i class="fas fa-utensils"></i></span>
-              <span class="detail-text">2 Orang</span>
-            </div>
-          </div>
+            </a>
+          <% }) %>
         </div>
       </div>
     </div>
@@ -132,22 +114,14 @@
       <div class="artikel-content">
         <h1>Artikel Terbaru</h1>
         <div class="artikel-wrap">
-          <div class="artikel-box">
-            <img src="/assets/artikel1.jpg" alt="">
-            <p>Khasiat Luar Biasa Ubi Ungu: Makanan Wajib dalam Diet Sehat Anda</p>
-          </div>
-          <div class="artikel-box">
-            <img src="/assets/artikel2.jpg" alt="">
-            <p>Daging Ayam Kini Lebih Nikmat: 7 Ide Kreatif dalam Mengolahnya di Dapur Anda</p>
-          </div>
-          <div class="artikel-box">
-            <img src="/assets/artikel3.jpg" alt="">
-            <p>Tips Memilih dan Menyajikan Makanan Sehat dalam Program Diet Anda</p>
-          </div>
-          <div class="artikel-box">
-            <img src="/assets/artikel4.jpg" alt="">
-            <p>Menjelajahi Kelezatan Masakan Korea: 10 Hidangan yang Wajib Anda Coba</p>
-          </div>
+          <% artikel.forEach(item => { %>
+            <a href="/artikel/<%= item.id %>" class="link-artikel">
+              <div class="artikel-box">
+                <img src="/uploads/<%= item.gambar %>" alt="">
+                <p><%= item.judul %></p>
+              </div>
+            </a>
+          <% }) %>
         </div>
       </div>
     </div>

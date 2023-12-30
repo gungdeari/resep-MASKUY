@@ -1,8 +1,7 @@
-const { Router } = require('express')
+const { Router } = require('express');
+const DetailController = require('../controller/detailController');
 const router = Router();
 
-router.get('/detail', (req, res) => {
-    res.render('detail')
-})
+router.get('/detail/:id', DetailController.index)
 
 module.exports = router;

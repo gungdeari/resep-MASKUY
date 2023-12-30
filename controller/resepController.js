@@ -2,9 +2,20 @@ const db = require("../db/db");
 const path = require("path");
 const fs = require("fs").promises;
 
+// Fungsi untuk mengonversi waktu dari menit ke format "jam menit"
+function convertToHoursMinutes(minutes) {
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+  return `${hours} jam ${remainingMinutes} menit`;
+}
+
 class ResepController {
   static async index(req, res) {
     const data = await db("resep");
+
+    data.forEach(resep => {
+      resep.waktuFormatted = convertToHoursMinutes(resep.waktu);
+    });
 
     res.render("admin/resep/list", {
       resep: data,
@@ -24,8 +35,10 @@ class ResepController {
     const { id } = req.params;
 
     try {
-      let result = await db("resep").where("id", id).first();
-      res.json(result);
+      let data = await db("resep").where("id", id).first();
+      res.render("admin/resep/edit", {
+        resep: data,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -98,24 +111,21 @@ class ResepController {
   }
 
   static async delete(req, res) {
-    const { id } = req.body;
-    console.log();
+    const { id } = req.params;
     try {
-      // Fetch the event data to get the filename
-      const resep = await db("resep").where("id", id).first();
+      const deletedCount = await db('resep').where({ id }).del();
 
-      // Delete the associated file
-      const filePath = path.join("public/uploads", resep.foto_resep);
-      await fs.unlink(filePath);
+      if (deletedCount === 0) {
+        return res.status(404).json({ error: 'Resep not found' });
+      }
 
-      // Delete the event record from the database
-      await db("resep").where({ id: id }).del();
-      res.redirect("/admin/resep/list"); // No content (successful deletion)
+      return res.redirect('/admin/resep/list');
     } catch (error) {
-      console.error("Error deleting resep:", error);
+      console.error("Error deleting recipe:", error);
       return res.status(500).json({ error: "Internal Server Error" });
     }
   }
+
 }
 
 module.exports = ResepController;
