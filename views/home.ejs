@@ -10,6 +10,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
+    <script src="/js/script.js"></script>
   </head>
   <body>
     <nav class="navbar">
@@ -35,55 +36,53 @@
       </div>
     </nav>
 
-    <div class="carrousel">
-      <div class="carrousel-content">
-        <img src="/assets/banner2.png" alt=""/>
+    <div class="carousel">
+      <div class="carousel-content">
+        <div class="slide">
+          <img src="/assets/banner2.png" alt="Banner 1">
+          <div class="text">
+            <h1>Jelajahi Resep Terbaru</h1>
+            <p>Temukan dan eksplorasi resep-resep pilihanmu dalam satu sentuhan. Jelajahi ragam hidangan favorit dari berbagai budaya untuk pengalaman memasak yang menggugah selera dan kreatif.</p>
+          </div>
+        </div>
       </div>
     </div>
+    
 
     <div class="search-section">
       <h1>Cari Resep Makanan Favoritmu!</h1>
       <div class="search-content">
         <div class="search-container">
           <form action="/search" method="GET">
-            <input type="text" placeholder="Masak apa hari ini? " class="search-input1">
+            <input type="text" placeholder="Masak apa hari ini?" class="search-input1" name="namaResep">
             <button type="submit" class="search-button1"><i class="fas fa-search"></i> Search</button>
           </form>
         </div>
       </div>
-    </div>
-    
+    </div>    
 
     <div class="kategori">
       <div class="kategori-content">
         <h1>Telusuri Berdasarkan Kategori</h1>
         <div class="kategori-wrap">
-          <div class="kategori-box">
-            <img src="/assets/kategori1.jpg" alt="">
-            <p>Makanan Nusantara</p>
-          </div>
-          <div class="kategori-box">
-            <img src="/assets/kategori2.jpg" alt="">
-            <p>Makanan Penutup</p>
-          </div>
-          <div class="kategori-box">
-            <img src="/assets/kategori3.jpg" alt="">
-            <p>Makanan Jepang</p>
-          </div>
-          <div class="kategori-box">
-            <img src="/assets/kategori4.jpg" alt="">
-            <p>Makanan Barat</p>
-          </div>
+          <% kategori.forEach(item => { %>
+            <div class="kategori-box">
+              <a href="/kategori/<%= item.replace(/\s/g, '-').toLowerCase() %>" class="kategori-link">
+                <p><%= item %></p>
+              </a>
+            </div>
+          <% }) %>
         </div>
       </div>
     </div>
+    
 
     <div class="resep">
       <div class="resep-content">
         <h1>Resep Terbaru</h1>
         <div class="resep-wrap">
-          <% resep.forEach(item => { %>
-            <a href="/detail/<%= item.id %>" class="resep-box-wrap">
+          <% resep.slice(0, 3).forEach((item, index) => { %>
+            <a href="/detail/<%= item.id %>" class="resep-box-wrap <%= index >= 3 ? 'resep-hidden' : '' %>">
               <div class="resep-box">
                 <img src="/uploads/<%= item.gambar %>" alt="">
                 <h3><%= item.nama %></h3>
@@ -97,6 +96,7 @@
             </a>
           <% }) %>
         </div>
+        <button id="load-more-btn" onclick="loadMore()">Load More</button>
       </div>
     </div>
 
@@ -130,7 +130,7 @@
       <div class="container">
         <div class="sec aboutus">
           <h2>About Us</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil enim adipisci, modi nulla porro consequatur quidem alias sint autem, qui dolore nemo placeat atque cumque corrupti tempore? Natus tempore cumque architecto autem, corrupti, rem, voluptatibus nesciunt dolores eaque nihil voluptates.</p>
+          <p>Maskuy, aplikasi resep masak unggulan, menyajikan koleksi resep bervariasi dari hidangan sehari-hari hingga makanan spesial. Memudahkan pengguna dengan langkah-langkah jelas dan tips berguna untuk menikmati pengalaman memasak yang menyenangkan dan lezat.</p>
           <ul class="sci">
             <li><a href=""><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
             <li><a href=""><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
@@ -167,6 +167,27 @@
       </div>
     </footer>
 
-    
+    <script>
+      
+      function loadMore() {
+        const resepItems = document.querySelectorAll('.resep-box-wrap');
+        let count = 0;
+      
+        // Tampilkan 3 item berikutnya yang tersembunyi saat tombol "Load More" ditekan
+        for (let i = 0; i < resepItems.length; i++) {
+          if (resepItems[i].style.display === 'none' && count < 3) {
+            resepItems[i].style.display = 'block';
+            count++;
+          }
+        }
+      
+        // Sembunyikan tombol "Load More" jika sudah tidak ada item yang tersisa
+        const hiddenResep = document.querySelectorAll('.resep-box-wrap[style="display: none;"]');
+        if (hiddenResep.length === 0) {
+          document.getElementById('load-more-btn').style.display = 'none';
+        }
+      }                               
+    </script>
+
   </body>
 </html>

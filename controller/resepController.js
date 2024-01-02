@@ -45,7 +45,7 @@ class ResepController {
   }
 
   static async store(req, res) {
-    const { nama_resep, deskripsi_resep, waktu_resep, level_resep, porsi_resep, bahan_resep, cara_resep } = req.body;
+    const { nama_resep, deskripsi_resep, waktu_resep, level_resep, porsi_resep, bahan_resep, cara_resep, kategori_resep } = req.body;
 
     try {
       let foto_resep  = ''; 
@@ -62,7 +62,8 @@ class ResepController {
         level: level_resep,
         porsi: porsi_resep,
         bahan: bahan_resep,
-        cara: cara_resep
+        cara: cara_resep,
+        kategori: kategori_resep
       });
 
       if (result) {
@@ -75,7 +76,7 @@ class ResepController {
   }
 
   static async update(req, res) {
-    const { nama_resep, deskripsi_resep, waktu_resep, level_resep, porsi_resep, bahan_resep, cara_resep } =
+    const { nama_resep, deskripsi_resep, waktu_resep, level_resep, porsi_resep, bahan_resep, cara_resep, kategori_resep } =
       req.body;
     const { id } = req.params;
 
@@ -98,7 +99,8 @@ class ResepController {
             level: level_resep,
             porsi: porsi_resep,
             bahan: bahan_resep,
-            cara: cara_resep  
+            cara: cara_resep,
+            kategori: kategori_resep  
         });
 
       if (result) {

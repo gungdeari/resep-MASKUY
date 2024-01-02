@@ -2,12 +2,16 @@ const db = require("../db/db");
 const path = require("path");
 const fs = require("fs").promises;
 
+
+
+
 class ArtikelController {
 
     static async show(req, res) {
         try {
           const { id } = req.params;
           const data = await db("artikel").where({ id }).first();
+          const dataArtikel = await db("artikel");
           
           if (!data) {
             return res.status(404).send('Artikel not found');
@@ -15,6 +19,7 @@ class ArtikelController {
     
           res.render("artikel", {
             artikel: data,
+            artikelAll: dataArtikel
           });
         } catch (error) {
           console.error(error);

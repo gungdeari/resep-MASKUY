@@ -28,11 +28,7 @@
     <div class="container-content">
         <div class="sidebar">
             <ul class="nav-list">
-                <li>
-                    <a href="/admin/carrousel">
-                        Carrousel
-                    </a>
-                </li>
+                
                 <li>
                     <a href="/admin/resep/list">
                         Resep
@@ -82,6 +78,10 @@
                         <option value="medium" <% if (resep.level_resep === 'medium') { %> selected <% } %>>Sedang</option>
                         <option value="hard" <% if (resep.level_resep === 'hard') { %> selected <% } %>>Susah</option>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label for="kategori_resep">Kategori Resep Maskan</label>
+                    <input type="text" class="form-control" name="kategori_resep" placeholder="Korean/Japanese/Nusantara/Dessert(Pilih Salah Satu)" value="<%= resep.kategori_resep %>">
                 </div>
                 <div class="form-group">
                     <label for="porsi_resep">Porsi</label>

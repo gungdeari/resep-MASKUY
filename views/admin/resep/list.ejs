@@ -28,11 +28,7 @@
     <div class="container-content">
         <div class="sidebar">
             <ul class="nav-list">
-                <li>
-                    <a href="/admin/carrousel">
-                        Carrousel
-                    </a>
-                </li>
+                
                 <li>
                     <a href="/admin/resep/list">
                         Resep
@@ -66,9 +62,8 @@
                                     <th> ID </th>
                                     <th> Nama </th>
                                     <th> Gambar </th>
-                                    <th> Waktu </th>
-                                    <th> Level </th>
-                                    <th> Porsi </th>
+                                    <th> Deskripsi </th>
+                                    <th> kategori </th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -83,9 +78,8 @@
                                             width="100px"
                                         />
                                         </td>  
-                                        <td><%= res.waktuFormatted %></td>
-                                        <td><%= res.level %></td>
-                                        <td><%= res.porsi %></td>
+                                        <td><%= res.deskripsi %></td>
+                                        <td><%= res.kategori %></td>
                                         <td style="text-align: center">
                                             <a href="/admin/resep/edit/<%= res.id %>" class="btn btn-info">
                                                 <i class="fas fa-pencil-alt"></i>

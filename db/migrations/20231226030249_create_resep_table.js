@@ -13,6 +13,7 @@ exports.up = function(knex) {
         table.integer('porsi');
         table.text('bahan');
         table.text('cara');
+        table.string('kategori');
     });
 };
 
