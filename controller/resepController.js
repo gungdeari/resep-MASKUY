@@ -22,6 +22,15 @@ class ResepController {
     });
   }
 
+  static async detail(req, res) {
+    const { id } = req.params;
+    const data = await db("resep").where({ id }).first();
+
+    res.render("admin/resep/detail", {
+      resep: data,
+    });
+  }
+
   static async create(req, res) {
     const data = await db("resep");
 

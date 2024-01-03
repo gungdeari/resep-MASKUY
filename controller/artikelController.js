@@ -3,8 +3,6 @@ const path = require("path");
 const fs = require("fs").promises;
 
 
-
-
 class ArtikelController {
 
     static async show(req, res) {
@@ -34,6 +32,16 @@ class ArtikelController {
             artikel: data,
         });
     }
+
+    static async detail(req, res) {
+        const { id } = req.params;
+        const data = await db("artikel").where({ id }).first();
+    
+        res.render("admin/artikel/detail", {
+          artikel: data,
+        });
+    }
+
 
     static async create(req, res) {
         const data = await db("artikel");

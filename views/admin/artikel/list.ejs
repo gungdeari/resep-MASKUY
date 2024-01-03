@@ -29,11 +29,6 @@
         <div class="sidebar">
             <ul class="nav-list">
                 <li>
-                    <a href="/admin/carrousel">
-                        Carrousel
-                    </a>
-                </li>
-                <li>
                     <a href="/admin/resep/list">
                         Resep
                     </a>
@@ -66,7 +61,6 @@
                                     <th> ID </th>
                                     <th> Judul </th>
                                     <th> Gambar </th>
-                                    <th> Content </th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -81,11 +75,13 @@
                                             width="150px"
                                         />
                                         </td>
-                                        <td><%= a.content %></td>  
                                         <td style="text-align: center">
-                                            <a href="/admin/artikel/edit/<%= a.id %>" class="btn btn-info">
+                                            <a href="/admin/artikel/edit/<%= a.id %>" class="btn btn-primary">
                                                 <i class="fas fa-pencil-alt"></i>
-                                            </a>                                        
+                                            </a> 
+                                            <a href="/admin/artikel/detail/<%= a.id %>" class="btn btn-info">
+                                                <i class="fas fa-info-circle"></i>
+                                            </a>                                         
                                             <form action="/admin/artikel/delete/<%= a.id %>" method="POST" class="d-inline">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button class="btn btn-danger">

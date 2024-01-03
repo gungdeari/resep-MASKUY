@@ -1,4 +1,5 @@
 const db = require("../db/db");
+
 function convertToHoursMinutes(minutes) {
   const hours = Math.floor(minutes / 60);
   const remainingMinutes = minutes % 60;
@@ -17,17 +18,13 @@ class SearchController {
       // Melakukan pencarian resep berdasarkan nama resep
       const hasilPencarianResep = await db("resep").where('nama', 'like', `%${namaResep}%`);
 
-      // Melakukan pencarian artikel berdasarkan judul artikel
-      const hasilPencarianArtikel = await db("artikel").where('judul', 'like', `%${namaResep}%`);
-
       hasilPencarianResep.forEach(resep => {
         resep.waktuFormatted = convertToHoursMinutes(resep.waktu);
       });
 
       // Kirim hasil pencarian resep dan artikel ke halaman search.ejs
       res.render("search", { 
-        hasilPencarianResep, 
-        hasilPencarianArtikel, 
+        hasilPencarianResep,  
         kataKunci: namaResep,
       });
     } catch (error) {

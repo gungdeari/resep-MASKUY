@@ -62,7 +62,6 @@
                                     <th> ID </th>
                                     <th> Nama </th>
                                     <th> Gambar </th>
-                                    <th> Deskripsi </th>
                                     <th> kategori </th>
                                     <th></th>
                                 </tr>
@@ -78,12 +77,14 @@
                                             width="100px"
                                         />
                                         </td>  
-                                        <td><%= res.deskripsi %></td>
                                         <td><%= res.kategori %></td>
-                                        <td style="text-align: center">
-                                            <a href="/admin/resep/edit/<%= res.id %>" class="btn btn-info">
+                                        <td style="text-align: center; margin-top:10px;">
+                                            <a href="/admin/resep/edit/<%= res.id %>" class="btn btn-primary">
                                                 <i class="fas fa-pencil-alt"></i>
-                                            </a>                                        
+                                            </a>   
+                                            <a href="/admin/resep/detail/<%= res.id %>" class="btn btn-info">
+                                                <i class="fas fa-info-circle"></i>
+                                            </a>                                      
                                             <form action="/admin/resep/delete/<%= res.id %>" method="POST" class="d-inline">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button class="btn btn-danger">

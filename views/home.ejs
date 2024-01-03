@@ -16,24 +16,11 @@
     <nav class="navbar">
       <a href="/" class="logo-style"><div class="logo">MAS<span>KUY</span></div></a>
       <ul class="nav-links">
-        <li><a href="#">Kategori</a></li>
-        <li><a href="#">Cari Resepmu</a></li>
-        <li><a href="#">Resep Terbaru</a></li>
-        <li><a href="#">Artikel</a></li>
+        <li><a href="#kategori">Kategori</a></li>
+        <li><a href="#telusuri">Cari Resepmu</a></li>
+        <li><a href="#resep-terbaru">Resep Terbaru</a></li>
+        <li><a href="#artikel">Artikel</a></li>
       </ul>
-      <div class="search-box">
-        <form action="#" method="GET">
-          <input type="text" placeholder="Search..." class="search-input" />
-          <button type="submit" class="search-button">
-            <i class="fas fa-search"></i>
-          </button>
-        </form>
-      </div>
-      <div class="burger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-      </div>
     </nav>
 
     <div class="carousel">
@@ -49,7 +36,7 @@
     </div>
     
 
-    <div class="search-section">
+    <div class="search-section" id="telusuri">
       <h1>Cari Resep Makanan Favoritmu!</h1>
       <div class="search-content">
         <div class="search-container">
@@ -61,7 +48,7 @@
       </div>
     </div>    
 
-    <div class="kategori">
+    <div class="kategori" id="kategori">
       <div class="kategori-content">
         <h1>Telusuri Berdasarkan Kategori</h1>
         <div class="kategori-wrap">
@@ -77,11 +64,15 @@
     </div>
     
 
-    <div class="resep">
+    <div class="resep" id="resep-terbaru">
       <div class="resep-content">
         <h1>Resep Terbaru</h1>
         <div class="resep-wrap">
-          <% resep.slice(0, 3).forEach((item, index) => { %>
+          <% 
+            // Lakukan sorting berdasarkan ID secara descending
+            const sortedResep = resep.sort((a, b) => b.id - a.id);
+            sortedResep.slice(0, 3).forEach((item, index) => { 
+          %>
             <a href="/detail/<%= item.id %>" class="resep-box-wrap <%= index >= 3 ? 'resep-hidden' : '' %>">
               <div class="resep-box">
                 <img src="/uploads/<%= item.gambar %>" alt="">
@@ -96,21 +87,21 @@
             </a>
           <% }) %>
         </div>
-        <button id="load-more-btn" onclick="loadMore()">Load More</button>
       </div>
     </div>
+    
 
     <div class="banner">
       <div class="banner-content">
         <h1>Ayo Belajar Masak, Temukan Resep Masakan Favoritmu Disini</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, in.</p>
-        <button class="btn-banner">
+        <button class="btn-banner" id="resep-terbaru">
           Ayo Jelajahi Resep Terbaru!
         </button>
       </div>
     </div>
 
-    <div class="artikel">
+    <div class="artikel" id="artikel">
       <div class="artikel-content">
         <h1>Artikel Terbaru</h1>
         <div class="artikel-wrap">
@@ -166,28 +157,6 @@
         </div>
       </div>
     </footer>
-
-    <script>
-      
-      function loadMore() {
-        const resepItems = document.querySelectorAll('.resep-box-wrap');
-        let count = 0;
-      
-        // Tampilkan 3 item berikutnya yang tersembunyi saat tombol "Load More" ditekan
-        for (let i = 0; i < resepItems.length; i++) {
-          if (resepItems[i].style.display === 'none' && count < 3) {
-            resepItems[i].style.display = 'block';
-            count++;
-          }
-        }
-      
-        // Sembunyikan tombol "Load More" jika sudah tidak ada item yang tersisa
-        const hiddenResep = document.querySelectorAll('.resep-box-wrap[style="display: none;"]');
-        if (hiddenResep.length === 0) {
-          document.getElementById('load-more-btn').style.display = 'none';
-        }
-      }                               
-    </script>
 
   </body>
 </html>

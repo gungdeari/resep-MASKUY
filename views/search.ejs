@@ -15,24 +15,11 @@
     <nav class="navbar">
         <a href="/" class="logo-style"><div class="logo">MAS<span>KUY</span></div></a>
         <ul class="nav-links">
-            <li><a href="#">Kategori</a></li>
-            <li><a href="#">Cari Resepmu</a></li>
-            <li><a href="#">Resep Terbaru</a></li>
-            <li><a href="#">Artikel</a></li>
+          <li><a href="/#kategori">Kategori</a></li>
+          <li><a href="/#telusuri">Cari Resepmu</a></li>
+          <li><a href="/#resep-terbaru">Resep Terbaru</a></li>
+          <li><a href="/#artikel">Artikel</a></li>
         </ul>
-        <div class="search-box">
-            <form action="#" method="GET">
-            <input type="text" placeholder="Search..." class="search-input" />
-            <button type="submit" class="search-button">
-                <i class="fas fa-search"></i>
-            </button>
-            </form>
-        </div>
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
     </nav>
 
     <!-- Bagian untuk menampilkan hasil pencarian resep -->
@@ -41,7 +28,7 @@
         <h1>Hasil Pencarian '<%= kataKunci %>'</h1>
         <div class="resep-wrap">
           <% hasilPencarianResep.forEach((resep, index) => { %>
-            <a href="/detail/<%= resep.id %>" class="resep-box-wrap <%= index >= 3 ? 'resep-hidden' : '' %>">
+            <a href="/detail/<%= resep.id %>" class="resep-box-wrap">
               <div class="resep-box">
                 <img src="/uploads/<%= resep.gambar %>" alt="">
                 <h3><%= resep.nama %></h3>

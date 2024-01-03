@@ -24,11 +24,6 @@ class KategoriController {
           resep.waktuFormatted = convertToHoursMinutes(resep.waktu);
         });
   
-        // Jika tidak ada data yang ditemukan untuk kategori tersebut, Anda dapat menangani kasus tersebut
-        if (!dataKategori || dataKategori.length === 0) {
-          return res.status(404).send('Resep untuk kategori ini tidak ditemukan');
-        }
-  
         // Kirim data kategori ke halaman kategori
         res.render("kategori", { 
           resepKategori: dataKategori, namaKategori,
